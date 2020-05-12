@@ -18,6 +18,7 @@ import { Comment } from '../shared/comment';
 export class DishDetailComponent implements OnInit {
 
   @ViewChild('fform') commentFormDirective;
+  errMess: string; 
 
     dish:Dish;
     dishIds: string[];
@@ -63,7 +64,8 @@ export class DishDetailComponent implements OnInit {
         })
 
         this.commentForm.valueChanges
-      .subscribe(data => this.onValueChanged(data));
+      .subscribe(data => this.onValueChanged(data),
+      errmess => this.errMess = <any>errmess);
 
     this.onValueChanged(); // (re)set validation messages now
       }
